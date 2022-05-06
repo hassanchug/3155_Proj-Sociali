@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from flask import Flask, abort, redirect, render_template, request
 
 from src.models import db
-from src.repositories.(our repository here) import (our repository)_singleton
+from src.repositories.post_repository import post_repository_singleton
 
 load_dotenv()
 
