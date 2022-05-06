@@ -6,7 +6,7 @@
     <title></title>
 </head>
 
-<body class="website-font" style="background-color: #c2c2c2;">
+<body>
     <nav class="navbar navbar-inverse navbar-expand-lg navbar-light website-font">
         <div class="navbar-header">
             <a class="navbar-brand" style="margin-left: 30px; font-size: 30px;" href="post_feed.html">
@@ -36,45 +36,14 @@
             </div>
           </div>
       </nav>
-
-      <div class="post_rectangle">
-            <div style="text-align: left; font-weight: bold;">
-                {{ Username }}
-            </div>
-            <div>
-                <a href="/create_post">
-                <button type="button" class="create_post_button">
-                <div>
-                    Create a new post...
-                    <img class="pencil" src="https://www.iconsdb.com/icons/preview/black/pencil-xxl.png">
-                </div>
-                </button>
-                </a>
-            </div>
-      </div>
 </body>
 
 </html>
 
 <style>
-    .navbar-inverse {
+    .navbar-inverse{
         background-color: #8AC5FF;
         box-shadow: 0px 7px 5px #767676;
-    }
-
-    .post_rectangle {
-        position: relative;
-        margin-top: 125px;
-        left: 50%;
-        width: 1200px;
-        height: 90px;
-        border: 2px solid #000;
-        box-shadow: 0px 5px 5px #767676;
-        transform: translate(-50%, -50%);
-        border-radius: 5px;
-        padding: 10px;
-        padding-left: 15px;
-        background-color: white;
     }
 
     .website-font {
@@ -91,13 +60,6 @@
     .magnifying-btn {
         height: 20px;
         width: auto;
-    }
-
-    .pencil {
-        height: 20px;
-        width: auto;
-        margin-left: 960px;
-        margin-bottom: 3px;
     }
 
     .dropdown-btn {
@@ -118,17 +80,6 @@
         margin-left: 5px;
         display: inline;
     }
-
-    .create_post_button {
-        border-radius: 5px;
-        margin-top: 6px;
-        height: 35px;
-        width: 1160px;
-        text-align: left;
-        color: #767676;
-    }
-
-    
 
     a {
         text-decoration:none;
