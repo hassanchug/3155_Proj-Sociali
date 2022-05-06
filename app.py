@@ -26,7 +26,6 @@ def user_signup():
 def post_feed():
     return render_template('post_feed.html')
 
-<<<<<<< HEAD
 @app.get('/user_profile')
 def user_profile():
     return render_template('user_profile.html')
@@ -42,8 +41,3 @@ def edit_post():
 @app.get('/view_post')
 def view_post():
     return render_template('view_individual_post.html')
-=======
-@app.get('/create_post')
-def create_post():
-    return render_template('create_a_post.html')
->>>>>>> 2ec3bf1eb6d901a694d671d1196dedb78eedc387
