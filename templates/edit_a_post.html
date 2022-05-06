@@ -38,10 +38,11 @@
       </nav>
 </header>
 
-<body>
+<body class="website-font" style="background-color: #c2c2c2;">
       <div class = "form-container">
         <form action="#" class="form-wrap" method="POST">
-            <h2>Username_Profile_Name</h2>
+        <div class="post_rectangle">
+            <h2>{{ Username }}</h2>
             
             <div class="form-box">
                 <textarea rows="25" cols="10" placeholder="Type your post here"></textarea>
@@ -49,6 +50,7 @@
             <div class="form-submit">
                 <input type="submit" value="Post New Edits" />
             </div>
+        </div>
         </form>
     </div>
 </body>
@@ -59,6 +61,21 @@
     .navbar-inverse{
         background-color: #8AC5FF;
         box-shadow: 0px 7px 5px #767676;
+    }
+
+    .post_rectangle {
+        position: relative;
+        margin-top: 125px;
+        left: 50%;
+        width: 1200px;
+        height: auto;
+        border: 2px solid #000;
+        box-shadow: 0px 5px 5px #767676;
+        transform: translate(-50%, -50%);
+        border-radius: 5px;
+        padding: 10px;
+        padding-left: 15px;
+        background-color: white;
     }
 
     .header {
