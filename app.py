@@ -25,3 +25,7 @@ def user_signup():
 @app.get('/post_feed')
 def post_feed():
     return render_template('post_feed.html')
+
+@app.get('/create_post')
+def create_post():
+    return render_template('create_a_post.html')
