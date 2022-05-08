@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS SocialiApp;
 USE SocialiApp;
 
 CREATE TABLE IF NOT EXISTS user (
-	user_id INT AUTO_INCREMENT,
+	username_id INT AUTO_INCREMENT,
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
     user_password VARCHAR(255) NOT NULL,
@@ -33,17 +33,17 @@ CREATE TABLE IF NOT EXISTS likes (
 );
 
 CREATE TABLE IF NOT EXISTS userposts (
-	Foreign Key (post_num), (user_num)
-    PRIMARY KEY (post_num), (user_num) 
+	Foreign Key (post_num), (username_id)
+    PRIMARY KEY (post_num), (username_id) 
 );
 
 CREATE TABLE IF NOT EXISTS userreplies (
-	Foreign Key (reply_num), (user_num)
-    PRIMARY KEY (reply_num), (user_num) 
+	Foreign Key (reply_num), (username_id)
+    PRIMARY KEY (reply_num), (username_id) 
 );
 
 CREATE TABLE IF NOT EXISTS postlikes (
-	Foreign Key (like_num), (post_num)
-    PRIMARY KEY (like_num), (post_num) 
+	Foreign Key (like_num), (username_id)
+    PRIMARY KEY (like_num), (username_id) 
 );
 
