@@ -1,5 +1,5 @@
-from models import User
-from models import db
+from src.models import User
+from src.models import db
 class PostRepository:
 
     def get_all_posts(self):
