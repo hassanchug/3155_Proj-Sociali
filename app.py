@@ -22,9 +22,15 @@ def index():
 def user_login():
     return render_template('user_login.html')
 
-@app.get('/signup')
+@app.post('/signup')
 def user_signup():
-    return render_template('user_signup.html')
+    username = request.form.get('Username')
+    firstname = request.form.get('firstname')
+    lastname = request.form.get('lastname')
+    password = request.form.get('password')
+
+    post_repository_singleton.create_user(username, firstname, lastname, password)
+    return redirect('/signup')
 
 @app.get('/post_feed')
 def post_feed():
@@ -45,3 +51,6 @@ def edit_post():
 @app.get('/view_post')
 def view_post():
     return render_template('view_individual_post.html')
+
+
+
