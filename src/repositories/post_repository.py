@@ -1,5 +1,5 @@
-from models import User
-from models import db
+from src.models import User
+from src.models import db
 class PostRepository:
 
     def get_all_posts(self):
@@ -12,16 +12,22 @@ class PostRepository:
         
         return User.query.get(post_id)
 
-    def create_user(self, username, firstname, lastname, password):
+    def create_user(self, username_id, firstname, lastname, user_password):
         
-        new_user = User(username='HotBoi', firstname='James', lastname='Charles', password='gay')
+        new_user = User(username_id='HotBoi', firstname='James', lastname='Charles', user_password='gay')
         db.session.add(new_user)
         db.session.commit()
         return new_user
 
-    def search_posts(self, username):
+    def search_posts(self, username_id):
         
         print(('username').ilike('word'))
+
+    def create_post(self, post_id, title, replies, likes):
+        new_post = Post(post_id='1', title='Cool pics', replies='lovely pics', likes='sixteen likes')
+        db.session.add(new_post)
+        db.session.commit()
+        return new_post
         
 
 
