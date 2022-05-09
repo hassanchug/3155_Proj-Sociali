@@ -14,6 +14,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('CLEARDB_DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
+@app.get('/')
+def index():
+    return render_template('user_login.html')
+
 @app.get('/login')
 def user_login():
     return render_template('user_login.html')
