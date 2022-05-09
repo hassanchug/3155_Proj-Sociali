@@ -24,13 +24,7 @@ def user_login():
 
 @app.get('/signup')
 def user_signup():
-    username = request.form.get('Username')
-    firstname = request.form.get('firstname')
-    lastname = request.form.get('lastname')
-    password = request.form.get('password')
-
-    post_repository_singleton.create_user(username, firstname, lastname, password)
-    return redirect('/login')
+    return render_template('user_signup.html')
 
 @app.get('/post_feed')
 def post_feed():
