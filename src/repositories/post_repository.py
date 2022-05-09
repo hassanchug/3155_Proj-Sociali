@@ -24,7 +24,7 @@ class PostRepository:
         print(('username').ilike('word'))
 
     def create_post(self, post_id, title, replies, likes):
-        new_post = Post(post_id='1', title='Cool pics', replies='lovely pics', likes='fifteen likes')
+        new_post = Post(post_id='1', title='Cool pics', replies='lovely pics', likes='sixteen likes')
         db.session.add(new_post)
         db.session.commit()
         return new_post
