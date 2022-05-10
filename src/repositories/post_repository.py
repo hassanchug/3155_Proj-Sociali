@@ -1,4 +1,4 @@
-from src.models import Users
+from src.models import Posts, User
 from src.models import db
 class PostRepository:
 
@@ -12,9 +12,9 @@ class PostRepository:
         
         return User.query.get(post_id)
 
-    def create_user(self, username_id, firstname, lastname, user_password):
-        
-        new_user = User(username_id='HotBoi', firstname='James', lastname='Charles', user_password='gay')
+    def create_user(self, username_id, firstname, lastname, password):
+
+        new_user = User(username_id='HotBoi', firstname='James', lastname='Charles', password='gay')
         db.session.add(new_user)
         db.session.commit()
         return new_user
@@ -23,8 +23,8 @@ class PostRepository:
         
         print(('username').ilike('word'))
 
-    def create_post(self, post_id, title, replies, likes):
-        new_post = Post(post_id='1', title='Cool pics', replies='lovely pics', likes='sixteen likes')
+    def create_post(self, post_id, title, replies, timeposted, likes):
+        new_post = Posts(post_id='1', title='Travel pics', replies='Lovely pics', timeposted='3:40pm', likes='16')
         db.session.add(new_post)
         db.session.commit()
         return new_post
@@ -33,4 +33,3 @@ class PostRepository:
 
 # Singleton to be used in other modules
 post_repository_singleton = PostRepository()
-
