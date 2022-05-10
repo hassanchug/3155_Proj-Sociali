@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, abort, redirect, render_template, request
 
-from src.models import db
+from src.models import db, User
 from src.repositories.post_repository import post_repository_singleton
 
 load_dotenv()
@@ -18,13 +18,25 @@ db.init_app(app)
 def index():
     return render_template('user_login.html')
 
-@app.get('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def user_login():
-    return render_template('user_login.html')
+    if(request.method == 'GET'):
+        return render_template('user_login.html')
+    elif(request.method == 'POST'):
+        (method) (handle route here)
 
-@app.get('/signup')
+@app.route('/signup', methods=['GET', 'POST'])
 def user_signup():
-    return render_template('user_signup.html')
+    if(request.method == 'GET'):
+        first_name = request.form.get('first_name', '')
+        last_name = request.form.get('last_name', '')
+        username = request.form.get('username', '')
+        password = request.form.get('password', '')
+        return render_template('user_signup.html')
+    elif(request.method == 'POST'):
+        new_user = User(first_name = first_name, last_name = last_name, username = username, password = password)
+        db.session.add(new_user)
+        db.session.commit()
 
 @app.get('/post_feed')
 def post_feed():
