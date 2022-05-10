@@ -1,4 +1,4 @@
-from src.models import User
+from src.models import Users
 from src.models import db
 class PostRepository:
 

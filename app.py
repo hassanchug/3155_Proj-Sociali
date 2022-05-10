@@ -44,7 +44,7 @@ def user_signup():
         password = request.form.get('password', '')
         return render_template('user_signup.html')
     elif(request.method == 'POST'):
-        new_user = User(first_name = first_name, last_name = last_name, username = username, password = password)
+        new_user = Users(first_name = first_name, last_name = last_name, username = username, password = password)
         db.session.add(new_user)
         db.session.commit()
 
