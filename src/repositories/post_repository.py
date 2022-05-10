@@ -8,9 +8,9 @@ class PostRepository:
     def get_post_by_id(self, post_id):
         return Users.query.get(post_id)
 
-    def create_user(self, username_id, firstname, lastname, user_password):
+    def create_user(self, username_id, first_name, last_name, user_password):
         
-        new_user = Users(username_id='HotBoi', firstname='James', lastname='Charles', user_password='gay')
+        new_user = Users(username_id='HotBoi', first_name='James', last_name='Charles', user_password='gay')
         self._db.append(Users)
         return new_user
 
