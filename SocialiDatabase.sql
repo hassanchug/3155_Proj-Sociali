@@ -2,8 +2,8 @@ DROP DATABASE IF EXISTS SocialiApp;
 CREATE DATABASE IF NOT EXISTS SocialiApp;
 USE SocialiApp;
 
-CREATE TABLE IF NOT EXISTS user (
-	username_id INT AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS users (
+	username_id INT AUTO_INCREMENT NOT NUll,
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
     user_password VARCHAR(255) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS user (
 CREATE TABLE IF NOT EXISTS replies (
 	reply_num INT AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
-    user VARCHAR(255) NOT NULL,
+    users VARCHAR(255) NOT NULL,
     timeposted VARCHAR(255) NOT NULL,
     likes INT NOT NULL,
     PRIMARY KEY (reply_num)

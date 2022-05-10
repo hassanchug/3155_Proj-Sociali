@@ -1,9 +1,9 @@
 import os
 
 from dotenv import load_dotenv
-from flask import Flask, abort, redirect, render_template, request
+from flask import Flask, abort, redirect, render_template, request, session, url_for
 
-from src.models import db, User
+from src.models import db, Users
 from src.repositories.post_repository import post_repository_singleton
 
 load_dotenv()
@@ -18,18 +18,22 @@ db.init_app(app)
 def index():
     return render_template('user_login.html')
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def user_login():
-    username = request.form.get('username', '')
-    password = request.form.get('password', '')
-    remember = True if request.form.get('remember') else False
+    if(request.method == 'GET'):
+        session.pop('user_id', None)
+        
+        username = request.form['username']
+        password = request.form['password']
 
-    user = User.query.filter_by(username=username).first()
+        user = [x for x in Users if x.username == username][0]
+        if user and user.password == password:
+            session['username_id'] = user.id
+            return redirect(url_for('post_feed'))
+            
+        return redirect(url_for('user_login'))
 
-    if not user:
-        return render_template('/login')
-
-    return render_template('/post_feed')
+    return render_template('user_login.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def user_signup():
