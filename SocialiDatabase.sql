@@ -4,8 +4,8 @@ USE SocialiApp;
 
 CREATE TABLE IF NOT EXISTS users (
 	username_id INT AUTO_INCREMENT NOT NUll,
-    firstname VARCHAR(255) NOT NULL,
-    lastname VARCHAR(255) NOT NULL,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
     user_password VARCHAR(255) NOT NULL,
     PRIMARY KEY (username_id)
 );

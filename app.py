@@ -26,11 +26,11 @@ def user_login():
         username = request.form['username']
         password = request.form['password']
 
-        user = [x for x in Users if x.username == username][0]
+        user = [x for x in User if x.username == username][0]
         if user and user.password == password:
             session['username_id'] = user.id
             return redirect(url_for('post_feed'))
-            
+
         return redirect(url_for('user_login'))
 
     return render_template('user_login.html')
