@@ -18,12 +18,18 @@ db.init_app(app)
 def index():
     return render_template('user_login.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST'])
 def user_login():
-    if(request.method == 'GET'):
-        return render_template('user_login.html')
-    elif(request.method == 'POST'):
-        (method) (handle route here)
+    username = request.form.get('username', '')
+    password = request.form.get('password', '')
+    remember = True if request.form.get('remember') else False
+
+    user = User.query.filter_by(username=username).first()
+
+    if not user:
+        return render_template('/login')
+
+    return render_template('/post_feed')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def user_signup():
