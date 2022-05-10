@@ -33,3 +33,4 @@ class PostRepository:
 
 # Singleton to be used in other modules
 post_repository_singleton = PostRepository()
+
