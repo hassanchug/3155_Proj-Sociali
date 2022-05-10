@@ -3,8 +3,6 @@ from src.models import db
 class PostRepository:
 
     def get_all_posts(self):
-        
-       
         return User.query.all()
 
     def get_post_by_id(self, post_id):
@@ -15,8 +13,7 @@ class PostRepository:
     def create_user(self, username_id, firstname, lastname, user_password):
         
         new_user = User(username_id='HotBoi', firstname='James', lastname='Charles', user_password='gay')
-        db.session.add(new_user)
-        db.session.commit()
+        self._db.append(User)
         return new_user
 
     def search_posts(self, username_id):

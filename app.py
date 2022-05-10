@@ -24,6 +24,7 @@ def user_login():
 
 @app.get('/signup')
 def user_signup():
+    
     return render_template('user_signup.html')
 
 @app.get('/post_feed')
