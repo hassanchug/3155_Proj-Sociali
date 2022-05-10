@@ -22,7 +22,6 @@ def index():
 def user_login():
     if(request.method == 'GET'):
         session.pop('user_id', None)
-        
         username = request.form['username']
         password = request.form['password']
 
