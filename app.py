@@ -47,4 +47,3 @@ def view_post():
     return render_template('view_individual_post.html')
 
 
-
