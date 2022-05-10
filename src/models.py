@@ -13,4 +13,4 @@ class Posts(db.Model):
     title = db.Column(db.String, nullable=False)
     username = db.Column(db.String, nullable=False)
     timepost = db.Column(db.String, nullable=False)
-    likes = db.Column(db.Int, nullable=False)
+    #likes = db.Column(db.Int, nullable=False)
