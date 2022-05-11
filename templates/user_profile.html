@@ -60,28 +60,24 @@
         <thead>
         </thead>
         <tbody>
-            {% for user in users %}
-            {% for post in posts %}
+          {% for post in posts %}
             <tr>
               <td>
-                
-                <div class="table_post_rectangle">
+                <div class="post_rectangle">
+                    {% for users in users %}
                     <div style="text-align: left; font-weight: bold; font-size: 18px;">
                         {{ users.username }}
                     </div>
-                    
-                    
+                    {% endfor %}
                     <div class="inner-post-rectangle">
                         <div>
-                            {{ post_id }}
-                        </div>  
+                            {{ posts.post_id }}
+                        </div>
                     </div>
                 </div>
-                
               </td>
             </tr>
-            {% endfor %}
-            {% endfor %}
+          {% endfor %}
         </tbody>
       </table>
 </body>
