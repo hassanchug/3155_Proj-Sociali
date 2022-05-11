@@ -42,8 +42,8 @@ def user_signup():
         first_name = request.form.get('first_name', '')
         last_name = request.form.get('last_name', '')
         username = request.form.get('username', '')
-        password = request.form.get('password', '')
-        new_user = Users(first_name = first_name, last_name = last_name, username = username, user_password = password)
+        user_password = request.form.get('password', '')
+        new_user = Users(first_name = first_name, last_name = last_name, username = username, user_password = user_password)
         db.session.add(new_user)
         db.session.commit()
 
