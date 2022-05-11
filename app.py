@@ -88,9 +88,9 @@ def edit_post():
     all_users = post_repository_singleton.get_all_users()
     return render_template('edit_a_post.html', list_posts_active=True, posts=all_posts, users=all_users)
 
-@app.get('/view_post/<int:post_id>')
-def view_post(post_id):
-    single_post = post_repository_singleton.get_post_by_id(post_id)
+@app.get('/view_post')
+def view_post():
+    single_post = post_repository_singleton.get_post_by_id()
     all_users = post_repository_singleton.get_all_users()
     return render_template('view_individual_post.html', post=single_post, users=all_users)
 
