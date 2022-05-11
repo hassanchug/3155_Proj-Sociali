@@ -27,3 +27,4 @@ Werkzeug==2.0.3
 wtforms==2.3.3
 WTForms
 Flask_WTF
+bcrypt==3.2.2
