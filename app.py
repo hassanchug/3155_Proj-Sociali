@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from flask import Flask, abort, redirect, render_template, request, session, flash, url_for
 
 from forms import LoginForm
-from flask_wtf import FlaskForm
 import bcrypt
 import secrets
 
