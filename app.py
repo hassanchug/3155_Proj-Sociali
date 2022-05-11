@@ -20,17 +20,16 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def user_login():
-    if(request.method == 'GET'):
-        #session.pop('user_id', None)
-        username = request.form['username']
-        user_password = request.form['password']
+    username = request.form['username']
+    password = request.form['password']
 
-        user = [x for x in Users if x.username == username][0]
-        if user and user.user_password == user_password:
-            session['username_id'] = user.id
+    if username not in db:
+        return render_template('user_login.html', info='Invalid Username')
+    else:
+        if db[username] != password:
+            return render_template('user_login.html', info='Invalid Password')
+        else:
             return render_template('post_feed.html')
-        return render_template('user_login.html')
-    return render_template('user_login.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def user_signup():
