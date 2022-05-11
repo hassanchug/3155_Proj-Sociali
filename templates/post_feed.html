@@ -26,10 +26,12 @@
             </button>
         </form>
         <div class="dropdown">
+            {% for users in users %}
             <h1 class="dropbtn">
-                {{ Username }}
+                @{{ users.username }}
                 <img class="dropdown-btn" src="https://pic.onlinewebfonts.com/svg/img_376402.png">
             </h1>
+            {% endfor %}
             <div class="dropdown-content">
               <a href="/user_profile">Your Profile</a>
               <a href="/">Log Out</a>
@@ -42,7 +44,7 @@
     <div class="post_rectangle">
         {% for users in users %}
         <div style="text-align: left; font-weight: bold; font-size: 18px;">
-            {{ users.username }}
+            @{{ users.username }}
         </div>
         {% endfor %}
         <div>
@@ -65,7 +67,7 @@
                 {% for user in users %}
                 <div class="table_post_rectangle">
                     <div style="text-align: left; font-weight: bold; font-size: 18px;">
-                        {{ user.username }}
+                        {{ users.username }}
                     </div>
                     {% endfor %}
                     <div class="inner-post-rectangle">

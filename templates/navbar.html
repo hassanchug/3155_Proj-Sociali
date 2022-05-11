@@ -26,10 +26,12 @@
             </button>
         </form>
         <div class="dropdown">
+            {% for users in users %}
             <h1 class="dropbtn">
-                {{ Username }}
+                {{ users.username }}
                 <img class="dropdown-btn" src="https://pic.onlinewebfonts.com/svg/img_376402.png">
             </h1>
+            {% endfor %}
             <div class="dropdown-content">
               <a href="/user_profile">Your Profile</a>
               <a href="/login">Log Out</a>
