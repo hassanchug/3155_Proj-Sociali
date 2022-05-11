@@ -3,8 +3,7 @@ from wtforms import StringField, PasswordField, SubmitField, TextAreaField, File
 from wtforms.validators import Length, Regexp, DataRequired, EqualTo
 from wtforms import ValidationError
 
-from models import Users
-from src.models import db
+from src.models import db, Users
 
 # form to login user
 class LoginForm(FlaskForm):
