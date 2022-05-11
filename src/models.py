@@ -12,6 +12,5 @@ class User(db.Model):
 class Post(db.Model):
     post_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
-    username = db.Column(db.String, nullable=False)
     timepost = db.Column(db.String, nullable=False)
     likes = db.Column(db.Integer, nullable=False)
