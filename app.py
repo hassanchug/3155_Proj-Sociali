@@ -29,8 +29,8 @@ def user_login():
     if login_form.validate_on_submit():
         the_user = db.session.query(User).filter_by(username=request.form['username']).one()
         
-        saltp = bcrypt.gensalt(14)
-        hashp = bcrypt.checkpw(request.form['password'].encode('utf-8') , bcrypt.gensalt(14))
+        #saltp = bcrypt.gensalt(14)
+        #hashp = bcrypt.checkpw(request.form['password'].encode('utf-8') , bcrypt.gensalt(14))
 
         if bcrypt.checkpw(request.form['password'].encode('utf-8'), the_user.password):
             session['user'] = the_user.username
