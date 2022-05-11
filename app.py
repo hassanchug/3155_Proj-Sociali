@@ -1,11 +1,13 @@
 import os
+import bcrypt
 
 from dotenv import load_dotenv
-from flask import Flask, abort, redirect, render_template, request, session, flash
+from flask import Flask, abort, redirect, render_template, request, session, flash, url_for
 
-from werkzeug.security import generate_password_hash, check_password_hash
+from forms import LoginForm
+from flask_wtf import FlaskForm
 
-from src.models import db, Users, Posts
+from src.models import db, Users as Users, Posts
 from src.repositories.post_repository import post_repository_singleton
 
 load_dotenv()
@@ -20,19 +22,24 @@ db.init_app(app)
 def index():
     return render_template('user_login.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST', 'GET'])
 def user_login():
-    username = request.form.get('username')
-    password = request.form.get('password')
-    remember = True if request.form.get('remember') else False
-    user = Users.query.filter_by(username=username).first()
-    if not user:
-        flash('Username does not exist.')
-        return render_template('user_login.html')
-    elif not check_password_hash(user.password, password):
-        flash('Password does not match.')
-        return render_template('user_login.html')
-    return render_template('post_feed.html')
+    login_form = LoginForm()
+
+    if login_form.validate_on_submit():
+        user = db.session.query(Users).filter_by(username=request.form['username']).one()
+        
+        saltp = bcrypt.gensalt(14)
+        hashp = bcrypt.hashpw(request.form['password'].encode('utf-8') , bcrypt.gensalt(14))
+
+        if bcrypt.checkpw(request.form['password'].encode('utf-8'), user.password.encode('utf-8')):
+            session['user'] = user.first_name
+            session['username_id'] = user.id
+            return redirect(url_for('post_feed'))
+        login_form.password.errors = ["Incorrect username or password."]
+        return render_template("login.html", form=login_form)
+    else:
+        return render_template("login.html", form=login_form)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def user_signup():

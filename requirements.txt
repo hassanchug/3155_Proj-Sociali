@@ -24,3 +24,6 @@ SQLAlchemy==1.4.32
 toml==0.10.2
 tomli==2.0.1
 Werkzeug==2.0.3
+wtforms==2.3.3
+WTForms
+Flask_WTF
