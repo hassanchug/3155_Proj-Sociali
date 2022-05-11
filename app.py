@@ -6,6 +6,7 @@ from flask import Flask, abort, redirect, render_template, request, session, fla
 from forms import LoginForm
 from flask_wtf import FlaskForm
 import bcrypt
+import secrets
 
 from src.models import db, Users as Users, Post
 from src.repositories.post_repository import post_repository_singleton
@@ -14,9 +15,8 @@ load_dotenv()
 
 app = Flask(__name__)
 
-SECRET_KEY = 'paulsucksdick'
-#app.config['SECRET_KEY'] = 'paulsucksdick'
-#app.config.from_pyfile('app.py')
+secret_key = secrets.token_hex(16)
+app.config['SECRET_KEY'] = secret_key
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('CLEARDB_DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
