@@ -70,7 +70,7 @@ def user_signup():
 
         return redirect(url_for('user_login'))
 
-    return render_template('user_signup', form=form)
+    return render_template('user_signup.html', form=form)
 
 @app.get('/post_feed')
 def post_feed():
