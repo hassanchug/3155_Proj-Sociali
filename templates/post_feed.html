@@ -61,7 +61,6 @@
         <thead>
         </thead>
         <tbody>
-          {% for post in posts %}
             <tr>
               <td>
                 <div class="post_rectangle">
@@ -71,14 +70,15 @@
                     </div>
                     {% endfor %}
                     <div class="inner-post-rectangle">
+                        {% for post in posts %}
                         <div>
                             {{ post_id }}
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
               </td>
             </tr>
-          {% endfor %}
         </tbody>
       </table>
 </body>
