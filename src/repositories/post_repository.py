@@ -21,8 +21,8 @@ class PostRepository:
         print(found_posts)
         return(found_posts)
 
-    def create_post(self, post_id, title, replies, timepost, likes):
-        new_post = Post(post_id=post_id, title=title, replies=replies, timepost=timepost, likes=likes)
+    def create_post(self, post_id, title, replies, likes):
+        new_post = Post(post_id=post_id, title=title, replies=replies, likes=likes)
         db.session.add(new_post)
         db.session.commit()
         return new_post  
