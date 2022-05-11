@@ -74,7 +74,7 @@ def post_feed():
 def user_profile():
     return render_template('user_profile.html')
 
-@app.post('/create_post')
+""" @app.post('/create_post')
 def create_post():
     title = request.form.get('title', '')
     replies = request.form.get('replies', '')
@@ -82,7 +82,11 @@ def create_post():
     if title == '' or replies == '':
         abort(400)
     created_post = post_repository_singleton.create_post(title, replies, likes)    
-    return redirect(f'/create_post/{created_post.post_id}')
+    return redirect(f'/create_post/{created_post.post_id}') """
+@app.get('/create_post')
+def create_post():
+    
+    return render_template('create_a_post.html')
 
 @app.get('/edit_post')
 def edit_post():
