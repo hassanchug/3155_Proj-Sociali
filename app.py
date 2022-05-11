@@ -20,7 +20,7 @@ db.init_app(app)
 
 @app.get('/')
 def index():
-    return render_template('user_login.html')
+    return redirect(url_for('user_login'))
 
 @app.route('/login', methods=['POST', 'GET'])
 def user_login():
