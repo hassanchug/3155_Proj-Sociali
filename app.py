@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, abort, redirect, render_template, request, session, flash, url_for
 
-from forms import LoginForm
+from forms import LoginForm, SignupForm
 from flask_wtf import FlaskForm
 import bcrypt
 
@@ -49,18 +49,28 @@ def user_login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def user_signup():
-    if(request.method == 'GET'):
-        return render_template('user_signup.html')
-    elif(request.method == 'POST'):
-        first_name = request.form.get('first_name', '')
-        last_name = request.form.get('last_name', '')
-        username = request.form.get('username', '')
-        user_password = request.form.get('password', '')
-        new_user = User(first_name = first_name, last_name = last_name, username = username, user_password = user_password)
+    form = SignupForm()
+    if request.method == 'POST' and form.validate_on_submit():
+
+        h_password = bcrypt.hashpw(
+        request.form['password'].encode('utf-8'), bcrypt.gensalt())
+
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        username = request.form['username']
+        password = request.form['password']
+
+        new_user = User(first_name, last_name, username, password)
+
         db.session.add(new_user)
         db.session.commit()
-        
-        return render_template('user_login.html')
+
+        session['username'] = username
+        session['username_id'] = new_user.id
+
+        return redirect(url_for('user_login'))
+
+    return render_template('user_signup', form=form)
 
 @app.get('/post_feed')
 def post_feed():
