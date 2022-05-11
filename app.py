@@ -29,8 +29,9 @@ def user_login():
     if login_form.validate_on_submit() and request.method=='POST':
         the_user = db.session.query(Users).filter_by(username=request.form['username']).first()
         
-        if bcrypt.checkpw(request.form['password'].encode('utf-8'), the_user.user_password.encode('utf-8')):
-            session['user'] = the_user.username
+        hashp = bcrypt.checkpw(request.form['password'].encode('utf-8') , bcrypt.gensalt(14))
+
+        if bcrypt.checkpw(request.form['password'].encode('utf-8'), hashp):
             session['username_id'] = the_user.id
             return redirect(url_for('post_feed'))
         login_form.password.errors = ["Incorrect username or password."]
