@@ -1,4 +1,4 @@
-from src.models import User, Post
+from src.models import Users, Post
 from src.models import db
 class PostRepository:
 
@@ -11,13 +11,13 @@ class PostRepository:
         return found_post
 
     def create_user(self, username_id, first_name, last_name, password):
-        new_user = User(username_id=username_id, first_name=first_name, last_name=last_name, password=password)
+        new_user = Users(username_id=username_id, first_name=first_name, last_name=last_name, password=password)
         db.session.add(new_user)
         db.session.commit()
         return new_user
 
     def search_posts(self, username_id):
-        found_posts = Post.query.filter(User.username_id.ilike(f'%{username_id}%')).all()
+        found_posts = Post.query.filter(Users.username_id.ilike(f'%{username_id}%')).all()
         print(found_posts)
         return(found_posts)
 
