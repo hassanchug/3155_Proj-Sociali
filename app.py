@@ -72,7 +72,9 @@ def post_feed():
 
 @app.get('/user_profile')
 def user_profile():
-    return render_template('user_profile.html')
+    all_posts = post_repository_singleton.get_all_posts()
+    all_users = post_repository_singleton.get_all_users()
+    return render_template('post_feed.html', list_posts_active=True, posts=all_posts, users=all_users)
 
 @app.post('/create_post')
 def create_post():
