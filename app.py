@@ -74,7 +74,8 @@ def user_signup():
 
 @app.get('/post_feed')
 def post_feed():
-    return render_template('post_feed.html')
+    all_posts = post_repository_singleton.get_all_posts()
+    return render_template('post_feed.html', list_posts_active=True, posts=all_posts)
 
 @app.get('/user_profile')
 def user_profile():
@@ -88,8 +89,9 @@ def create_post():
 def edit_post():
     return render_template('edit_a_post.html')
 
-@app.get('/view_post')
-def view_post():
-    return render_template('view_individual_post.html')
+@app.get('/view_post/<int:post_id>')
+def view_post(post_id):
+    single_post = post_repository_singleton.get_post_by_id(post_id)
+    return render_template('view_individual_post.html', post=single_post)
 
 
