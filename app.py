@@ -32,7 +32,7 @@ def user_login():
         #saltp = bcrypt.gensalt(14)
         #hashp = bcrypt.checkpw(request.form['password'].encode('utf-8') , bcrypt.gensalt(14))
 
-        if bcrypt.checkpw(request.form['password'].encode('utf-8'), the_user.password):
+        if bcrypt.checkpw(request.form['password'].encode('utf-8'), the_user.user_password):
             session['user'] = the_user.username
             session['username_id'] = the_user.id
             return redirect(url_for('post_feed'))
