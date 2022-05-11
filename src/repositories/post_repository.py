@@ -16,6 +16,10 @@ class PostRepository:
         db.session.commit()
         return new_user
 
+    def get_all_users(self):
+        all_users = Users.query.all()
+        return all_users
+
     def search_posts(self, username_id):
         found_posts = Post.query.filter(Users.username_id.ilike(f'%{username_id}%')).all()
         print(found_posts)

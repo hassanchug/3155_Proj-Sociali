@@ -67,7 +67,7 @@ def user_signup():
 @app.get('/post_feed')
 def post_feed():
     all_posts = post_repository_singleton.get_all_posts()
-    all_users = post_repository_singleton.create_user()
+    all_users = post_repository_singleton.get_all_users()
     return render_template('post_feed.html', list_posts_active=True, posts=all_posts, users=all_users)
 
 @app.get('/user_profile')
