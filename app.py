@@ -74,26 +74,25 @@ def post_feed():
 def user_profile():
     all_posts = post_repository_singleton.get_all_posts()
     all_users = post_repository_singleton.get_all_users()
-    return render_template('post_feed.html', list_posts_active=True, posts=all_posts, users=all_users)
+    return render_template('user_profile.html', list_posts_active=True, posts=all_posts, users=all_users)
 
 @app.post('/create_post')
 def create_post():
-    title = request.form.get('title', '')
-    replies = request.form.get('replies', '')
-    likes = request.form.get('likes', 0, type=int)
-    if title == '' or replies == '':
-        abort(400)
-    created_post = post_repository_singleton.create_post(title, replies, likes)    
-    return redirect(f'/create_post/{created_post.post_id}') 
+    all_posts = post_repository_singleton.get_all_posts()
+    all_users = post_repository_singleton.get_all_users()
+    return render_template('create_a_post.html', list_posts_active=True, posts=all_posts, users=all_users)
 
 
 @app.get('/edit_post')
 def edit_post():
-    return render_template('edit_a_post.html')
+    all_posts = post_repository_singleton.get_all_posts()
+    all_users = post_repository_singleton.get_all_users()
+    return render_template('edit_a_post.html', list_posts_active=True, posts=all_posts, users=all_users)
 
 @app.get('/view_post/<int:post_id>')
 def view_post(post_id):
     single_post = post_repository_singleton.get_post_by_id(post_id)
-    return render_template('view_individual_post.html', post=single_post)
+    all_users = post_repository_singleton.get_all_users()
+    return render_template('view_individual_post.html', post=single_post, users=all_users)
 
 
