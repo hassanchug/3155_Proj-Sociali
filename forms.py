@@ -18,19 +18,3 @@ submit = SubmitField('Log In')
 def validate_username(self, field):
     if db.session.query(Users).filter_by(username=field.data).count() == 0:
         raise ValidationError('Incorrect Username.')
-
-# form to signup user
-class SignupForm(FlaskForm):
-    class Meta:
-        csrf = False
-
-    username = StringField('first_name', [DataRequired()])
-    username = StringField('last_name', [DataRequired()])
-    username = StringField('username', [DataRequired()])
-    password = PasswordField('password', [DataRequired()])
-
-    submit = SubmitField('Submit')
-
-    def validate_username(self, field):
-        if db.session.query(Users).filter_by(username=field.data).count() != 0:
-            raise ValidationError('Username already in use.')

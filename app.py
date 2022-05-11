@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, abort, redirect, render_template, request, session, flash, url_for
 
-from forms import LoginForm, SignupForm
+from forms import LoginForm
 from flask_wtf import FlaskForm
 import bcrypt
 
@@ -27,7 +27,7 @@ def user_login():
     login_form = LoginForm()
 
     if login_form.validate_on_submit() and request.method=='POST':
-        the_user = db.session.query(Users).filter_by(username=request.form['username']).one()
+        the_user = db.session.query(Users).filter_by(username=request.form['username']).first()
         
         #saltp = bcrypt.gensalt(14)
         #hashp = bcrypt.checkpw(request.form['password'].encode('utf-8') , bcrypt.gensalt(14))
