@@ -14,8 +14,8 @@ load_dotenv()
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'paulsucksdick'
-app.config.from_pyfile('app.py')
+#app.config['SECRET_KEY'] = 'paulsucksdick'
+#app.config.from_pyfile('app.py')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('CLEARDB_DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
