@@ -39,32 +39,21 @@
 </header>
 
 <body class="website-font" style="background-color: #c2c2c2;">
-  <div class = "form-container">
-    <form action="#" class="form-wrap" method="POST">
-        <h2>John Smith</h2>
-        <h5>@johnsmith</h5>
-        <textarea id="w3review" name="w3review" rows="4" cols="50">
-            Insert recent posts
-        </textarea>
-        <div id="container">
-            <div style= "position: absolute; bottom: 330px; left: 755px;">
-                <input type="button" value="Edit Post" style="float: right;">
+    <div class="post_rectangle">
+        <div style="text-align: left; font-weight: bold; font-size: 18px;">
+            {{ Username }}
+        </div>
+        <div>
+            <a href="/edit_post">
+            <button type="button" class="create_post_button">
+            <div>
+                Edit a post
+                <img class="pencil" src="https://www.iconsdb.com/icons/preview/black/pencil-xxl.png">
             </div>
-        <textarea id="w3review" name="w3review" rows="4" cols="50">
-            Insert recent posts
-        </textarea>
-        <div style= "position: absolute; bottom: 220px; left: 755px;">
-            <input type="button" value="Edit Post" style="float: right;">
+            </button>
+            </a>
         </div>
-        <textarea id="w3review" name="w3review" rows="4" cols="50">
-            Insert recent posts
-        </textarea>
-        <div style= "position: absolute; bottom: 110px; left: 755px;">
-            <input type="button" value="Edit Post" style="float: right;">
-        </div>
-        </div>
-    </form>
-</div>
+  </div>
 </body>
 
 <style>
@@ -80,6 +69,21 @@
 
   .website-font {
       font-family: Happy Monkey;
+  }
+
+  .post_rectangle {
+        position: relative;
+        margin-top: 125px;
+        left: 50%;
+        width: 1200px;
+        height: 90px;
+        border: 2px solid #000;
+        box-shadow: 0px 5px 5px #767676;
+        transform: translate(-50%, -50%);
+        border-radius: 5px;
+        padding: 10px;
+        padding-left: 15px;
+        background-color: white;
   }
 
   .logo {
