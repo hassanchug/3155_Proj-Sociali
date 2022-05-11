@@ -57,13 +57,13 @@
         </div>
     </div>
 
-    <table class="table" style="">
+    <table class="table">
         <thead>
         </thead>
         <tbody>
             <tr>
               <td>
-                <div class="post_rectangle">
+                <div class="table_post_rectangle">
                     {% for user in users %}
                     <div style="text-align: left; font-weight: bold; font-size: 18px;">
                         {{ user.username }}
@@ -106,6 +106,21 @@
         left: 50%;
         width: 1200px;
         height: 90px;
+        border: 2px solid #000;
+        box-shadow: 0px 5px 5px #767676;
+        transform: translate(-50%, -50%);
+        border-radius: 5px;
+        padding: 10px;
+        padding-left: 15px;
+        background-color: white;
+    }
+
+    .table_post_rectangle {
+        position: relative;
+        margin-top: 125px;
+        left: 50%;
+        width: 1200px;
+        height: auto;
         border: 2px solid #000;
         box-shadow: 0px 5px 5px #767676;
         transform: translate(-50%, -50%);
