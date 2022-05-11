@@ -10,8 +10,8 @@ class LoginForm(FlaskForm):
     class Meta:
         csrf = False
 
-username = StringField('username')
-username = StringField('password')
+username = StringField('username', [DataRequired()])
+username = StringField('password', [DataRequired()])
 
 submit = SubmitField('Log In')
 
@@ -24,10 +24,10 @@ class SignupForm(FlaskForm):
     class Meta:
         csrf = False
 
-    username = StringField('first_name')
-    username = StringField('last_name')
-    username = StringField('username')
-    password = PasswordField('password')
+    username = StringField('first_name', [DataRequired()])
+    username = StringField('last_name', [DataRequired()])
+    username = StringField('username', [DataRequired()])
+    password = PasswordField('password', [DataRequired()])
 
     submit = SubmitField('Submit')
 
