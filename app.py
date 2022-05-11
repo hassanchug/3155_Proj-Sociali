@@ -5,7 +5,7 @@ from flask import Flask, abort, redirect, render_template, request, session, fla
 
 from forms import LoginForm
 from flask_wtf import FlaskForm
-import bcrypt
+from flask_bcrypt import bcrypt
 
 from src.models import db, Users as Users, Posts
 from src.repositories.post_repository import post_repository_singleton
