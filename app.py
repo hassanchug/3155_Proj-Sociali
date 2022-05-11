@@ -23,10 +23,10 @@ def user_login():
     if(request.method == 'GET'):
         #session.pop('user_id', None)
         username = request.form['username']
-        password = request.form['password']
+        user_password = request.form['password']
 
         user = [x for x in Users if x.username == username][0]
-        if user and user.password == password:
+        if user and user.password == user_password:
             session['username_id'] = user.id
             return redirect(url_for('post_feed'))
 
@@ -42,8 +42,8 @@ def user_signup():
         first_name = request.form.get('first_name', '')
         last_name = request.form.get('last_name', '')
         username = request.form.get('username', '')
-        password = request.form.get('password', '')
-        new_user = Users(first_name = first_name, last_name = last_name, username = username, password = password)
+        user_password = request.form.get('password', '')
+        new_user = Users(first_name = first_name, last_name = last_name, username = username, user_password = user_password)
         db.session.add(new_user)
         db.session.commit()
 
