@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, abort, redirect, render_template, request, session, url_for
 
-from src.models import db, Users
+from src.models import db, Users, Posts
 from src.repositories.post_repository import post_repository_singleton
 
 load_dotenv()
@@ -24,10 +24,10 @@ def user_login():
     password = request.form['password']
 
     if username not in db:
-        return render_template('user_login.html', info='Invalid Username')
+        return render_template('user_login.html')
     else:
         if db[username] != password:
-            return render_template('user_login.html', info='Invalid Password')
+            return render_template('user_login.html')
         else:
             return render_template('post_feed.html')
 
