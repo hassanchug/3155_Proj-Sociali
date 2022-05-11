@@ -13,7 +13,6 @@ from src.repositories.post_repository import post_repository_singleton
 load_dotenv()
 
 app = Flask(__name__)
-SESSION_TYPE='redis'
 
 app.config['SECRET_KEY'] = 'paulsucksdick'
 app.config.from_pyfile('app.py')
