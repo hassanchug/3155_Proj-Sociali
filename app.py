@@ -68,7 +68,7 @@ def user_signup():
         session['username'] = username
         session['username_id'] = new_user.id
 
-        return redirect(url_for('post_feed'))
+        return redirect(url_for('user_login'))
 
     return render_template('user_signup', form=form)
 
