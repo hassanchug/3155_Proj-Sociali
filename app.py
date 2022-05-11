@@ -49,28 +49,18 @@ def user_login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def user_signup():
-    form = SignupForm()
-    if request.method == 'POST' and form.validate_on_submit():
-
-        h_password = bcrypt.hashpw(
-        request.form['password'].encode('utf-8'), bcrypt.gensalt())
-
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        username = request.form['username']
-        user_password = request.form['password']
-
-        new_user = post_repository_singleton.create_user(first_name, last_name, username, user_password)
-
+    if(request.method == 'GET'):
+        return render_template('user_signup.html')
+    elif(request.method == 'POST'):
+        first_name = request.form.get('first_name', '')
+        last_name = request.form.get('last_name', '')
+        username = request.form.get('username', '')
+        user_password = request.form.get('password', '')
+        new_user = Users(first_name = first_name, last_name = last_name, username = username, user_password = user_password)
         db.session.add(new_user)
         db.session.commit()
-
-        session['username'] = username
-        session['username_id'] = new_user.id
-
-        return redirect(url_for('user_login'))
-
-    return render_template('user_signup.html', form=form)
+        
+        return render_template('user_login.html')
 
 @app.get('/post_feed')
 def post_feed():
