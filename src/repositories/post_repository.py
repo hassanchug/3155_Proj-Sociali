@@ -10,8 +10,8 @@ class PostRepository:
         found_post = Post.query.get_or_404(post_id)
         return found_post
 
-    def create_user(self, username_id, first_name, last_name, password):
-        new_user = Users(username_id=username_id, first_name=first_name, last_name=last_name, user_password=password)
+    def create_user(self, first_name, last_name, password):
+        new_user = Users(first_name=first_name, last_name=last_name, user_password=password)
         db.session.add(new_user)
         db.session.commit()
         return new_user
@@ -21,8 +21,8 @@ class PostRepository:
         print(found_posts)
         return(found_posts)
 
-    def create_post(self, post_id, title, replies, likes):
-        new_post = Post(post_id=post_id, title=title, replies=replies, likes=likes)
+    def create_post(self, title, replies, likes):
+        new_post = Post(title=title, replies=replies, likes=likes)
         db.session.add(new_post)
         db.session.commit()
         return new_post  
