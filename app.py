@@ -26,7 +26,7 @@ def index():
 def user_login():
     login_form = LoginForm()
 
-    if login_form.validate_on_submit():
+    if login_form.validate_on_submit() and request.method=='POST':
         the_user = db.session.query(Users).filter_by(username=request.form['username']).one()
         
         #saltp = bcrypt.gensalt(14)
