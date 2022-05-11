@@ -3,7 +3,7 @@ from wtforms import StringField, PasswordField, SubmitField, TextAreaField, File
 from wtforms.validators import Length, Regexp, DataRequired, EqualTo
 from wtforms import ValidationError
 
-from src.models import db, Users
+from src.models import db, User
 
 # form to login user
 class LoginForm(FlaskForm):
@@ -16,5 +16,5 @@ username = StringField('Username', DataRequired())
 submit = SubmitField('Log In')
 
 def validate_username(self, field):
-    if db.session.query(Users).filter_by(username=field.data).count() == 0:
+    if db.session.query(User).filter_by(username=field.data).count() == 0:
         raise ValidationError('Incorrect Username.')
