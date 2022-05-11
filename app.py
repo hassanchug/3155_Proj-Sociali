@@ -22,8 +22,6 @@ def index():
 def user_login():
     if(request.method == 'GET'):
         #session.pop('user_id', None)
-        return render_template('user_login.html')
-    elif(request.method == 'POST'):
         username = request.form['username']
         user_password = request.form['password']
 
@@ -32,6 +30,7 @@ def user_login():
             session['username_id'] = user.id
             return render_template('post_feed.html')
         return render_template('user_login.html')
+    return render_template('user_login.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def user_signup():
