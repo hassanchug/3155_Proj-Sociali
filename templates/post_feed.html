@@ -27,7 +27,7 @@
         </form>
         <div class="dropdown">
             <h1 class="dropbtn">
-                {{ Username }}
+                {{ users.username }}
                 <img class="dropdown-btn" src="https://pic.onlinewebfonts.com/svg/img_376402.png">
             </h1>
             <div class="dropdown-content">
@@ -41,7 +41,7 @@
 <body class="website-font" style="background-color: #c2c2c2;">
     <div class="post_rectangle">
         <div style="text-align: left; font-weight: bold; font-size: 18px;">
-            {{ Username }}
+            {{ users.username }}
         </div>
         <div>
             <a href="/create_post">
@@ -53,7 +53,30 @@
             </button>
             </a>
         </div>
-  </div>
+    </div>
+
+    <table class="table">
+        <thead>
+        </thead>
+        <tbody>
+          {% for post in posts %}
+            <tr>
+              <td>
+                <div class="post_rectangle">
+                    <div style="text-align: left; font-weight: bold; font-size: 18px;">
+                        {{ users.username }}
+                    </div>
+                    <div class="inner-post-rectangle">
+                        <div>
+                            "{{ posts.post_id }}"
+                        </div>
+                    </div>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
 </body>
 
 </html>
