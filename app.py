@@ -37,9 +37,9 @@ def user_login():
             session['username_id'] = the_user.id
             return redirect(url_for('post_feed'))
         login_form.password.errors = ["Incorrect username or password."]
-        return render_template("login.html", form=login_form)
+        return render_template("user_login.html", form=login_form)
     else:
-        return render_template("login.html", form=login_form)
+        return render_template("user_login.html", form=login_form)
 
 #@app.route('/logout')
 #def logout():
@@ -60,7 +60,7 @@ def user_signup():
         db.session.add(new_user)
         db.session.commit()
         
-        return render_template('user_login.html')
+        return redirect(url_for('user_login.html'))
 
 @app.get('/post_feed')
 def post_feed():
