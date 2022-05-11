@@ -32,7 +32,7 @@ def user_login():
         hashp = bcrypt.hashpw(request.form['password'].encode('utf-8') , bcrypt.gensalt(14))
 
         if bcrypt.checkpw(request.form['password'].encode('utf-8'), hashp):
-            session['username_id'] = the_user.id
+            session['username_id'] = the_user.username_id
             return redirect(url_for('post_feed'))
         login_form.password.errors = ["Incorrect username or password."]
         return render_template("user_login.html", form=login_form)
