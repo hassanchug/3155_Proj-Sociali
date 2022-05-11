@@ -1,7 +1,9 @@
 import os
 
 from dotenv import load_dotenv
-from flask import Flask, abort, redirect, render_template, request, session, url_for
+from flask import Flask, abort, redirect, render_template, request, session, flash
+
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from src.models import db, Users, Posts
 from src.repositories.post_repository import post_repository_singleton
@@ -20,16 +22,17 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def user_login():
-    username = request.form['username']
-    password = request.form['password']
-
-    if username not in db:
-        return render_template('user_login.html', info='Invalid Username')
-    else:
-        if db[username] != password:
-            return render_template('user_login.html', info='Invalid Password')
-        else:
-            return render_template('post_feed.html')
+    username = request.form.get('username')
+    password = request.form.get('password')
+    remember = True if request.form.get('remember') else False
+    user = Users.query.filter_by(username=username).first()
+    if not user:
+        flash('Username does not exist.')
+        return render_template('user_login.html')
+    elif not check_password_hash(user.password, password):
+        flash('Password does not match.')
+        return render_template('user_login.html')
+    return render_template('post_feed.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def user_signup():
