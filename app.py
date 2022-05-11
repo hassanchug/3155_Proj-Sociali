@@ -24,10 +24,10 @@ def user_login():
     password = request.form['password']
 
     if username not in db:
-        return render_template('user_login.html')
+        return render_template('user_login.html', info='Invalid Username')
     else:
         if db[username] != password:
-            return render_template('user_login.html')
+            return render_template('user_login.html', info='Invalid Password')
         else:
             return render_template('post_feed.html')
 
