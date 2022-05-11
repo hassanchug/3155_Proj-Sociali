@@ -14,6 +14,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
+SECRET_KEY = 'paulsucksdick'
 #app.config['SECRET_KEY'] = 'paulsucksdick'
 #app.config.from_pyfile('app.py')
 
