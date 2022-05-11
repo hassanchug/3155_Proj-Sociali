@@ -7,7 +7,7 @@ from forms import LoginForm
 from flask_wtf import FlaskForm
 import bcrypt
 
-from src.models import db, Users as Users, Posts
+from src.models import db, User, Post
 from src.repositories.post_repository import post_repository_singleton
 
 load_dotenv()
@@ -27,7 +27,7 @@ def user_login():
     login_form = LoginForm()
 
     if login_form.validate_on_submit():
-        user = db.session.query(Users).filter_by(username=request.form['username']).one()
+        user = db.session.query(User).filter_by(username=request.form['username']).one()
         
         saltp = bcrypt.gensalt(14)
         hashp = bcrypt.hashpw(request.form['password'].encode('utf-8') , bcrypt.gensalt(14))
@@ -50,7 +50,7 @@ def user_signup():
         last_name = request.form.get('last_name', '')
         username = request.form.get('username', '')
         user_password = request.form.get('password', '')
-        new_user = Users(first_name = first_name, last_name = last_name, username = username, user_password = user_password)
+        new_user = User(first_name = first_name, last_name = last_name, username = username, user_password = user_password)
         db.session.add(new_user)
         db.session.commit()
         
