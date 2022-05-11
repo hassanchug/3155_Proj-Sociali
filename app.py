@@ -43,11 +43,11 @@ def user_login():
     else:
         return render_template("user_login.html", form=login_form)
 
-#@app.route('/logout')
-#def logout():
-#    if session.get('username_id'):
-#        session.clear()
-#    return redirect(url_for('index'))
+@app.route('/logout')
+def logout():
+    if session.get('username_id'):
+        session.clear()
+    return redirect(url_for('index'))
 
 @app.route('/signup', methods=['GET', 'POST'])
 def user_signup():

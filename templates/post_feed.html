@@ -34,7 +34,7 @@
             {% endfor %}
             <div class="dropdown-content">
               <a href="/user_profile">Your Profile</a>
-              <a href="/">Log Out</a>
+              <a href="/logout">Log Out</a>
             </div>
           </div>
       </nav>
@@ -70,8 +70,8 @@
                         {{ users.username }}
                     </div>
                     {% endfor %}
+                    {% for post in posts %}
                     <div class="inner-post-rectangle">
-                        {% for post in posts %}
                         <div>
                             {{ post_id }}
                         </div>  
