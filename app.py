@@ -23,10 +23,10 @@ def user_login():
     if(request.method == 'GET'):
         #session.pop('user_id', None)
         username = request.form['username']
-        password = request.form['password']
+        user_password = request.form['password']
 
         user = [x for x in Users if x.username == username][0]
-        if user and user.password == password:
+        if user and user.user_password == user_password:
             session['username_id'] = user.id
             return render_template('post_feed.html')
         return render_template('user_login.html')
