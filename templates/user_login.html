@@ -38,15 +38,6 @@
     <p>Copyright© 2022 · Final Project Group 24</p>
 </footer>
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-    <div class="notification is-danger">
-        {{ messages[0] }}
-    </div>
-{% endif %}
-{% endwith %}
-<form method="POST" action="/login">
-
 </html>
 
 <style>
