@@ -9,7 +9,7 @@ class User(db.Model):
     last_name = db.Column(db.String, nullable=False)
     user_password = db.Column(db.String, nullable=False)
 
-class Posts(db.Model):
+class Post(db.Model):
     post_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     username = db.Column(db.String, nullable=False)
