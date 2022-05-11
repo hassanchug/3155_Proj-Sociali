@@ -7,7 +7,7 @@ from forms import LoginForm
 from flask_wtf import FlaskForm
 import bcrypt
 
-from src.models import db, Users as Users, Posts
+from src.models import db, User as User, Post
 from src.repositories.post_repository import post_repository_singleton
 
 load_dotenv()
@@ -27,19 +27,25 @@ def user_login():
     login_form = LoginForm()
 
     if login_form.validate_on_submit():
-        user = db.session.query(Users).filter_by(username=request.form['username']).one()
+        the_user = db.session.query(User).filter_by(username=request.form['username']).one()
         
-        saltp = bcrypt.gensalt(14)
-        hashp = bcrypt.hashpw(request.form['password'].encode('utf-8') , bcrypt.gensalt(14))
+        #saltp = bcrypt.gensalt(14)
+        #hashp = bcrypt.checkpw(request.form['password'].encode('utf-8') , bcrypt.gensalt(14))
 
-        if bcrypt.checkpw(request.form['password'].encode('utf-8'), user.password.encode('utf-8')):
-            session['user'] = user.first_name
-            session['username_id'] = user.id
+        if bcrypt.checkpw(request.form['password'].encode('utf-8'), the_user.password):
+            session['user'] = the_user.username
+            session['username_id'] = the_user.id
             return redirect(url_for('post_feed'))
         login_form.password.errors = ["Incorrect username or password."]
         return render_template("login.html", form=login_form)
     else:
         return render_template("login.html", form=login_form)
+
+#@app.route('/logout')
+#def logout():
+#    if session.get('user'):
+#        session.clear()
+#    return redirect(url_for('index'))
 
 @app.route('/signup', methods=['GET', 'POST'])
 def user_signup():
@@ -50,7 +56,7 @@ def user_signup():
         last_name = request.form.get('last_name', '')
         username = request.form.get('username', '')
         user_password = request.form.get('password', '')
-        new_user = Users(first_name = first_name, last_name = last_name, username = username, user_password = user_password)
+        new_user = User(first_name = first_name, last_name = last_name, username = username, user_password = user_password)
         db.session.add(new_user)
         db.session.commit()
         

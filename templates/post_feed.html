@@ -40,9 +40,11 @@
 
 <body class="website-font" style="background-color: #c2c2c2;">
     <div class="post_rectangle">
+        {% for user in users %}
         <div style="text-align: left; font-weight: bold; font-size: 18px;">
-            {{ User.username }}
+            {{ user.username }}
         </div>
+        {% endfor %}
         <div>
             <a href="/create_post">
             <button type="button" class="create_post_button">
@@ -63,12 +65,14 @@
             <tr>
               <td>
                 <div class="post_rectangle">
+                    {% for user in users %}
                     <div style="text-align: left; font-weight: bold; font-size: 18px;">
-                        {{ Users.username }}
+                        {{ user.username }}
                     </div>
+                    {% endfor %}
                     <div class="inner-post-rectangle">
                         <div>
-                            "{{ posts.post_id }}"
+                            {{ posts.post_id }}
                         </div>
                     </div>
                 </div>
