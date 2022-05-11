@@ -11,7 +11,7 @@ class PostRepository:
         return found_post
 
     def create_user(self, username_id, first_name, last_name, password):
-        new_user = Users(username_id=username_id, first_name=first_name, last_name=last_name, password=password)
+        new_user = Users(username_id=username_id, first_name=first_name, last_name=last_name, user_password=password)
         db.session.add(new_user)
         db.session.commit()
         return new_user
