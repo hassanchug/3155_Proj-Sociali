@@ -60,7 +60,7 @@ def user_signup():
         username = request.form['username']
         password = request.form['password']
 
-        new_user = Users(first_name, last_name, username, password)
+        new_user = post_repository_singleton.create_user(first_name, last_name, username, password)
 
         db.session.add(new_user)
         db.session.commit()
