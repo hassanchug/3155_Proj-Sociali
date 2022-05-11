@@ -12,10 +12,10 @@ def test_user_model():
 
     assert U1 in post_repository_singleton.create_user('Flameboy','Tony','Le','GetBuckets919')
 
-    U1 = User('Chaosblaze', 'Shekar', 'Bala', 'ClashOfClans')
-    assert U1.username == 'Chaosblaze'
-    assert U1.firstname == 'Shekar'
-    assert U1.lastname == 'Bala'
-    assert U1.password == "ClashOfClans"
+    U2 = User('Chaosblaze', 'Shekar', 'Bala', 'ClashOfClans')
+    assert U2.username == 'Chaosblaze'
+    assert U2.firstname == 'Shekar'
+    assert U2.lastname == 'Bala'
+    assert U2.password == "ClashOfClans"
 
-    assert U1 in post_repository_singleton.create_user('Chaosblaze','Shekar','Bala','ClashOfClans')
+    assert U2 in post_repository_singleton.create_user('Chaosblaze','Shekar','Bala','ClashOfClans')
