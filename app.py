@@ -41,7 +41,7 @@ def user_login():
 
 #@app.route('/logout')
 #def logout():
-#    if session.get('user'):
+#    if session.get('username_id'):
 #        session.clear()
 #    return redirect(url_for('index'))
 
