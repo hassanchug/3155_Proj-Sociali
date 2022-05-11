@@ -7,7 +7,7 @@ from forms import LoginForm, SignupForm
 from flask_wtf import FlaskForm
 import bcrypt
 
-from src.models import db, User as User, Post
+from src.models import db, User as User, Posts
 from src.repositories.post_repository import post_repository_singleton
 
 load_dotenv()
