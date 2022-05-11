@@ -46,6 +46,7 @@ def user_signup():
         new_user = Users(first_name = first_name, last_name = last_name, username = username, user_password = user_password)
         db.session.add(new_user)
         db.session.commit()
+    return redirect(url_for(user_login))
 
 @app.get('/post_feed')
 def post_feed():
